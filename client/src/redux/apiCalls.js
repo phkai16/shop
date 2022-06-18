@@ -18,6 +18,7 @@ export const login = async (dispatch, user) => {
   dispatch(loginStart());
   try {
     const res = await publicRequest.post("/auth/login", user);
+    console.log(res);
     dispatch(loginSuccess(res.data));
   } catch (err) {
     dispatch(loginFailure());
@@ -34,12 +35,12 @@ export const register = async (dispatch, user) => {
   }
 };
 
-export const updateUser = async (dispatch, id, user) => {
+export const updateUser = async (dispatch, id, user, accessToken) => {
   dispatch(updateStart());
   try {
     const res = await userRequest.put(`users/${id}`, user);
-    dispatch(updateSuccess(res.data));
-    window.location.reload();
+    dispatch(updateSuccess({ ...res.data, accessToken }));
+    // window.location.reload();
   } catch (err) {
     dispatch(updateFailure());
   }

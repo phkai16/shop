@@ -115,11 +115,7 @@ export default function Profile() {
       }
     };
     getData();
-  }, []);
-
-  console.log(user);
-  console.log(user._id);
-  console.log(currentUser);
+  }, [currentUser]);
 
   const handleClickEdit = () => {
     setEditable(true);
@@ -131,7 +127,7 @@ export default function Profile() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    updateUser(dispatch, currentUser._id, user);
+    updateUser(dispatch, currentUser._id, user, currentUser.accessToken);
   };
   return (
     <>

@@ -23,14 +23,14 @@ const UserSchema = new mongoose.Schema(
     img: {
       type: String,
     },
-    firstName: {
+    firstname: {
       type: String,
     },
-    lastName: {
+    lastname: {
       type: String,
     },
     birthday: {
-      type: Date,
+      type: String,
     },
     gender: {
       type: String,
